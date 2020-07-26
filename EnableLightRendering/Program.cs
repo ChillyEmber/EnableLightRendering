@@ -40,7 +40,7 @@ namespace FixGraphicsEngine
                 File.WriteAllText(fileName, text);
                 Barf();
             }
-            if (text.Contains("00gfxsets_hp::-%(|::false"))
+            if (text.Contains("07gfxsets_hp::-%(|::0"))
             {
                 text = text.Replace("07gfxsets_hp::-%(|::0", "07gfxsets_hp::-%(|::1");
                 File.WriteAllText(fileName, text);
