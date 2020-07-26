@@ -17,8 +17,7 @@ namespace FixGraphicsEngine
             //Finds the config paths and sets them as a variable/string.
             var fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SCP Secret Laboratory/registry.txt");
 
-            //Registry.txt check (Currently not working)
-            
+            //Registry.txt check
             if (File.Exists(fileName))
             {
                 Console.WriteLine($"The Registry file is there. Continuing.");
@@ -28,7 +27,6 @@ namespace FixGraphicsEngine
                 Console.WriteLine($"The Registry file is not there. Making the file and continuing.");
                 File.Create(fileName).Close();
             }
-
             
             string text = File.ReadAllText(fileName);
 
