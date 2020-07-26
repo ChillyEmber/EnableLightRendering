@@ -13,10 +13,14 @@ namespace FixGraphicsEngine
     {
         static void Main()
         {
+            //Finds the config paths and sets them as a variable/string.
             var fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SCP Secret Laboratory/registry.txt");
             string text = File.ReadAllText(fileName);
+
             string Contains = "The Light Rendering line is there. Continuing.";
             string DoesNotContain = "The Light Rendering line is not there. Writing line and continuing.";
+
+            //Checks to see if the line is actually there in configs.
             if (text.Contains("07gfxsets_hp::-%(|::"))
             {
                 Console.WriteLine(Contains);
@@ -28,6 +32,8 @@ namespace FixGraphicsEngine
                 System.IO.File.AppendAllText(fileName, billybob);
                 NotBarf();
             }
+
+            //Toggles the config.
             if (text.Contains("07gfxsets_hp::-%(|::1"))
             {
                 text = text.Replace("07gfxsets_hp::-%(|::1", "07gfxsets_hp::-%(|::0");
@@ -40,34 +46,6 @@ namespace FixGraphicsEngine
                 File.WriteAllText(fileName, text);
                 NotBarf();
             }
-            /*if (text.Contains("07graphics_api::-%(|::1"))
-            {
-                text = text.Replace("07graphics_api::-%(|::1", "07graphics_api::-%(|::0");
-                File.WriteAllText(fileName, text);
-                Barf();
-            }
-            if (text.Contains("07graphics_api::-%(|::2"))
-            {
-                text = text.Replace("07graphics_api::-%(|::2", "07graphics_api::-%(|::0");
-                File.WriteAllText(fileName, text);
-                Barf();
-            }
-            if (text.Contains("07graphics_api::-%(|::3"))
-            {
-                text = text.Replace("07graphics_api::-%(|::3", "07graphics_api::-%(|::0");
-                File.WriteAllText(fileName, text);
-                Barf();
-            }
-            if (text.Contains("07graphics_api::-%(|::4"))
-            {
-                text = text.Replace("07graphics_api::-%(|::4", "07graphics_api::-%(|::0");
-                File.WriteAllText(fileName, text);
-                Barf();
-            }
-            else
-            {
-                text = text.Replace("07graphics_api::-%(|::", "07graphics_api::-%(|::0");
-            }*/
             File.WriteAllText(fileName, text);
             Barf();
         }
@@ -87,6 +65,7 @@ namespace FixGraphicsEngine
         }
         static void UhOh()
         {
+            // Yes I know it has no references, shhhhh
             Console.WriteLine($"Something went wrong, please let lXxMangoxXl know about this! Press any key to close the program.");
             Console.ReadKey();
             Process.GetCurrentProcess().Kill();
