@@ -15,10 +15,26 @@ namespace FixGraphicsEngine
         {
             //Finds the config paths and sets them as a variable/string.
             var fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SCP Secret Laboratory/registry.txt");
+            var Appdata = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SCP Secret Laboratory/");
+            string registry = "registry";
+
+            //Registry.txt check
+            if (File.Exists(fileName))
+            {
+                Console.WriteLine($"The Registry file is there. Continuing.");
+            }
+            else
+            {
+                Console.WriteLine($"The Registry file is not there. Making the file and continuing.");
+                File.Create(fileName);
+                Main();
+            }
+
             string text = File.ReadAllText(fileName);
 
             string Contains = "The Light Rendering line is there. Continuing.";
             string DoesNotContain = "The Light Rendering line is not there. Writing line and continuing.";
+
 
             //Checks to see if the line is actually there in configs.
             if (text.Contains("07gfxsets_hp::-%(|::"))
