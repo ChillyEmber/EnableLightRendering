@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Media;
 using System.IO;
 using System.Diagnostics;
+using System.Data;
 
 namespace FixGraphicsEngine
 {
@@ -15,10 +16,9 @@ namespace FixGraphicsEngine
         {
             //Finds the config paths and sets them as a variable/string.
             var fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SCP Secret Laboratory/registry.txt");
-            var Appdata = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SCP Secret Laboratory/");
-            string registry = "registry";
 
-            //Registry.txt check
+            //Registry.txt check (Currently not working)
+            
             if (File.Exists(fileName))
             {
                 Console.WriteLine($"The Registry file is there. Continuing.");
@@ -26,10 +26,10 @@ namespace FixGraphicsEngine
             else
             {
                 Console.WriteLine($"The Registry file is not there. Making the file and continuing.");
-                File.Create(fileName);
-                Main();
+                File.Create(fileName).Close();
             }
 
+            
             string text = File.ReadAllText(fileName);
 
             string Contains = "The Light Rendering line is there. Continuing.";
