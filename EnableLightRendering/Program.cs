@@ -49,7 +49,7 @@ namespace FixGraphicsEngine
             File.WriteAllText(fileName, text);
             Barf();
         }
-
+        
         static void Barf()
         {
             Console.WriteLine("Done! Set Light Rendering to false! Hit any key to quit!");
@@ -72,3 +72,4 @@ namespace FixGraphicsEngine
         }
     }
 }
+//Shoot me a message on Discord lXxMangoxXl#8878 if theres any issues.
