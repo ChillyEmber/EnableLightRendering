@@ -14,6 +14,17 @@ namespace FixGraphicsEngine
     {
         static void Main()
         {
+            //Checks to see if SCP:SL is running
+            Process[] pname = Process.GetProcessesByName("scpsl");
+            if (pname.Length > 0)
+            {
+                SLRunning();
+            }
+            else
+            {
+                Console.WriteLine("SCP:SL is not running, continuing.");
+            }
+
             //Finds the config paths and sets them as a variable/string.
             var fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SCP Secret Laboratory/registry.txt");
 
@@ -41,8 +52,8 @@ namespace FixGraphicsEngine
             {
                 string DoesNotContain = "The Light Rendering line is not there. Writing line and continuing.";
                 Console.WriteLine(DoesNotContain);
-                string billybob = Environment.NewLine + "07gfxsets_hp::-%(|::1";
-                System.IO.File.AppendAllText(fileName, billybob);
+                string WriteLine = Environment.NewLine + "07gfxsets_hp::-%(|::1";
+                System.IO.File.AppendAllText(fileName, WriteLine);
                 SetToTrue();
             }
 
@@ -73,6 +84,12 @@ namespace FixGraphicsEngine
         static void SetToTrue()
         {
             Console.WriteLine("Done! Set Light Rendering to true! Hit any key to quit!");
+            Console.ReadKey();
+            Process.GetCurrentProcess().Kill();
+        }
+        static void SLRunning()
+        {
+            Console.WriteLine("SCP:SL is currently running, close it before running the program! Hit any key to close.");
             Console.ReadKey();
             Process.GetCurrentProcess().Kill();
         }
