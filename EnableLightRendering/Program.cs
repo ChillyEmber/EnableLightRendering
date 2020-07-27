@@ -28,23 +28,22 @@ namespace FixGraphicsEngine
                 File.Create(fileName).Close();
             }
             
+            //Reads all the text
             string text = File.ReadAllText(fileName);
-
-            string Contains = "The Light Rendering line is there. Continuing.";
-            string DoesNotContain = "The Light Rendering line is not there. Writing line and continuing.";
-
 
             //Checks to see if the line is actually there in configs.
             if (text.Contains("07gfxsets_hp::-%(|::"))
             {
+                string Contains = "The Light Rendering line is there. Continuing.";
                 Console.WriteLine(Contains);
             }
             else
             {
+                string DoesNotContain = "The Light Rendering line is not there. Writing line and continuing.";
                 Console.WriteLine(DoesNotContain);
                 string billybob = Environment.NewLine + "07gfxsets_hp::-%(|::1";
                 System.IO.File.AppendAllText(fileName, billybob);
-                NotBarf();
+                SetToTrue();
             }
 
             //Toggles the config.
@@ -52,38 +51,30 @@ namespace FixGraphicsEngine
             {
                 text = text.Replace("07gfxsets_hp::-%(|::1", "07gfxsets_hp::-%(|::0");
                 File.WriteAllText(fileName, text);
-                Barf();
+                SetToFalse();
             }
             if (text.Contains("07gfxsets_hp::-%(|::0"))
             {
                 text = text.Replace("07gfxsets_hp::-%(|::0", "07gfxsets_hp::-%(|::1");
                 File.WriteAllText(fileName, text);
-                NotBarf();
+                SetToTrue();
             }
             File.WriteAllText(fileName, text);
-            Barf();
+            SetToFalse();
         }
         
-        static void Barf()
+        //Used for writing the line and ending the program.
+        static void SetToFalse()
         {
             Console.WriteLine("Done! Set Light Rendering to false! Hit any key to quit!");
             Console.ReadKey();
             Process.GetCurrentProcess().Kill();
         }
-
-        static void NotBarf()
+        static void SetToTrue()
         {
             Console.WriteLine("Done! Set Light Rendering to true! Hit any key to quit!");
             Console.ReadKey();
             Process.GetCurrentProcess().Kill();
         }
-        static void UhOh()
-        {
-            // Yes I know it has no references, shhhhh
-            Console.WriteLine($"Something went wrong, please let lXxMangoxXl know about this! Press any key to close the program.");
-            Console.ReadKey();
-            Process.GetCurrentProcess().Kill();
-        }
     }
 }
-//Shoot me a message on Discord lXxMangoxXl#8878 if theres any issues.
