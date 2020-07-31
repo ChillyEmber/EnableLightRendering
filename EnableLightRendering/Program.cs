@@ -77,13 +77,13 @@ namespace FixGraphicsEngine
         //Used for writing the line and ending the program.
         static void SetToFalse()
         {
-            Console.WriteLine("Done! Set Light Rendering to false! Hit any key to quit!");
+            Console.WriteLine("Done! Disabled Rendering in lights! Hit any key to quit!");
             Console.ReadKey();
             Process.GetCurrentProcess().Kill();
         }
         static void SetToTrue()
         {
-            Console.WriteLine("Done! Set Light Rendering to true! Hit any key to quit!");
+            Console.WriteLine("Done! Enabled Rendering in lights! Hit any key to quit!");
             Console.ReadKey();
             Process.GetCurrentProcess().Kill();
         }
